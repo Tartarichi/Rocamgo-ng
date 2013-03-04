@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Rocamgo is recogniter of the go games by processing digital images with opcv.
+# Rocamgo is recogniter of the go games by processing digital images with 
+# opencv.
 # Copyright (C) 2012 Víctor Ramirez de la Corte <virako.9 at gmail dot com>
 # Copyright (C) 2012 David Medina Velasco <cuidadoconeltecho at gmail dot com>
 #
@@ -49,8 +50,10 @@ class Cameras:
         self.camera = None
         if sys.platform == 'linux2':
             self.check_cameras = self.check_cameras_linux
-        else:
+        elif sys.platform == 'win32':
             self.check_cameras = self.check_cameras_windows
+        else:
+            raise NotImplementedError()
 
     def on_mouse(self, event, x, y, flags, camera):
         """Capturador de eventos de click de ratón.
